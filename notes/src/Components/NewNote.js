@@ -1,16 +1,19 @@
 import React from "react";
 import Note from './Note'
 
-const NewNote = () => {
-  const handleClick = () => {
-    console.log("clicked");
-  };
+const NewNote = ({notes, createNewNote}) => {
 
-  return (
-    <div className="newNote">
-      <button onClick={handleClick}>New Note</button>
-    </div>
-  );
+  const handleClick = () => {
+    createNewNote();
+    console.log(notes)
+};
+
+return (
+  <div className="newNote">
+    <button onClick={handleClick}>New Note</button>
+  </div>
+);
 };
 
 export default NewNote;
+
