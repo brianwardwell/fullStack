@@ -1,10 +1,11 @@
 import React from 'react'
 import Note from './Note'
 
-const NotesList = () => {
+// NotesList will map through all of the Notes for the given user and then render each Note component
+const NotesList = ({notes}) => {
     return(
         <div className="notesList">
-            <Note />
+           {notes.map(note => {return (<Note notes={notes}/>)})}
         </div>
     )
 }

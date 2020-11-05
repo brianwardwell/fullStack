@@ -6,28 +6,26 @@ import './App.css';
 
 function App() {
   const [notes, setNotes] = useState([])
-  const [note, setNote] = useState({
-    id: 0,
-    name: '',
-    content: ''
-  })
-
+  const [editTitle, setEditTitle] = useState('Title');
+  const [editContent, setEditContent] = useState('Content');
+  
   const createNewNote = () => {
     console.log("clicked");
-    //make new note object
-    //object will contain key/values for each note created
-    //need a unique id, a name and a value(user's notes) 
-    setNotes({id: {id +1},
-    name: "Brian"})
+    setNotes([{title: "untitled", content: "Notes"}, ...notes]);
+  }
+
+  const deleteAll = () => {
+    setNotes([])
   }
 
   return (
     <div className="container">
-      <NewNote notes={notes} createNewNote={createNewNote}/>
-      <NotesList/>
-      <EditNote/>
+      <NewNote notes={notes} createNewNote={createNewNote} deleteAll={deleteAll}/>
+      <NotesList notes={notes}/>
+      <EditNote editTitle={editTitle} editContent={editContent}/>
     </div>
   );
 }
 
 export default App;
+
