@@ -1,14 +1,14 @@
-import React from 'react';
+// import React from 'react';
 
-const DeleteNotes = ({deleteAll}) => {
+// const DeleteNotes = ({deleteAll}) => {
 
-    const handleClick = () => {
-        deleteAll()
-    }
+//     const handleClick = () => {
+//         deleteAll()
+//     }
 
-    return(
-        <button onClick={handleClick}>Delete All</button>
-    )
-}
+//     return(
+//         <button onClick={handleClick}>Delete All</button>
+//     )
+// }
 
-export default DeleteNotes;
+// export default DeleteNotes;

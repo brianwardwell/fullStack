@@ -5,12 +5,11 @@ const NewNote = ({notes, createNewNote, deleteAll}) => {
 
   const handleClick = () => {
     createNewNote();
-    console.log(notes)
 };
   const handleDelete = () => {
     deleteAll();
   }
-
+  console.log(notes)
 return (
   <div className="newNote">
     <button onClick={handleClick}>New Note</button>

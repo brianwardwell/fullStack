@@ -1,14 +1,46 @@
-import React from 'react';
+import React, { useState } from "react";
 
 const EditNote = (props) => {
+  const handleNameChange = (e) => {
+    props.setEditTitle(e.target.value);
+    console.log(props.editTitle);
+  };
+  const handleContentChange = (e) => {
+    props.setEditContent(e.target.value);
+    console.log(props.editContent);
+  };
+
+
+  if (props.notes.length > 0) {
     return (
-        <div className="editNote">
-            <form>
-                <input type='text' placeholder='Untitled' id='Test' /><br></br><br></br>
-                <input type='text' placeholder='Notes' name='notes'/>
-            </form>
-        </div>
-    )
-}
+      <div className="editNote">
+        <form>
+          <input
+            id="name"
+            type="text"
+            placeholder="Untitled"
+            name="name"
+            onChange={handleNameChange}
+          />
+          <br></br>
+          {/* <button onClick={props.setEditTitle}>Save Name</button> */}
+          <br></br>
+          
+          <input
+            id="content"
+            type="text"
+            placeholder="Notes"
+            name="notes"
+            onChange={handleContentChange}
+          />
+        </form>
+        <button onClick={props.editNotes}>Save Notes</button>
+      </div>
+      
+    );
+  } else {
+    return null;
+  }
+};
 
 export default EditNote;

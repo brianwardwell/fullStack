@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Note = ({notes}) => {
-    
+const Note = ({notes, editTitle, editContent}) => {
+   
     if (notes.length > 0) {
     return (
         <div>
