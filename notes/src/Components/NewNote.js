@@ -5,6 +5,7 @@ const NewNote = ({notes, createNewNote, deleteAll}) => {
 
   const handleClick = () => {
     createNewNote();
+    
 };
   const handleDelete = () => {
     deleteAll();

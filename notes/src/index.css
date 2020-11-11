@@ -42,3 +42,7 @@ code {
   height: 12vh;
   border: 1px solid green;
 }
+
+.selectedNote {
+  border: 2px solid purple;
+}

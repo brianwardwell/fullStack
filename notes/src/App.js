@@ -3,23 +3,34 @@ import NewNote from "./Components/NewNote";
 import NotesList from "./Components/NotesList";
 import EditNote from "./Components/EditNote";
 import "./App.css";
+import dummyData from "./Components/dummyData";
 
 function App() {
   const [notes, setNotes] = useState([]);
-
   const [editTitle, setEditTitle] = useState("Title");
   const [editContent, setEditContent] = useState("Content");
+  const [selectedNote, setSelectedNote] = useState({});
 
+  //Button that creates a new note
   const createNewNote = () => {
-    
-    setNotes([{ title: 'Title', content: 'Notes'}, ...notes]);
-    console.log('what is ', editTitle)
-    console.log('is notes setting')
+    setNotes([
+      ...notes,
+      { title: "Butts", content: "Notes", id: Math.random() },
+    ]);
+   
+  };
+
+
+
+  const selectNote = (note) => {
+    //Gets passed to Note.js
+    //Needed to set selectedId state
+    setSelectedNote(note);
   };
 
   const editNotes = () => {
-    setNotes([{title: editTitle, content: editContent}])
-  }
+    setNotes([{ title: editTitle, content: editContent }]);
+  };
 
   const deleteAll = () => {
     setNotes([]);
@@ -32,11 +43,14 @@ function App() {
         createNewNote={createNewNote}
         deleteAll={deleteAll}
       />
-      <NotesList editTitle={editTitle}
-      editContent={editContent}
-      notes={notes} 
+      <NotesList
+        notes={notes}
+        selectedNote={selectedNote}
+        selectNote={selectNote}
       />
+
       <EditNote
+        selectedNote={selectedNote}
         setEditTitle={setEditTitle}
         setEditContent={setEditContent}
         notes={notes}

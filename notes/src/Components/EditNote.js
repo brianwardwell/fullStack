@@ -2,12 +2,13 @@ import React, { useState } from "react";
 
 const EditNote = (props) => {
   const handleNameChange = (e) => {
+   
     props.setEditTitle(e.target.value);
-    console.log(props.editTitle);
+    
   };
   const handleContentChange = (e) => {
     props.setEditContent(e.target.value);
-    console.log(props.editContent);
+   
   };
 
 
@@ -18,9 +19,10 @@ const EditNote = (props) => {
           <input
             id="name"
             type="text"
-            placeholder="Untitled"
+            placeholder="Title"
             name="name"
             onChange={handleNameChange}
+            
           />
           <br></br>
           {/* <button onClick={props.setEditTitle}>Save Name</button> */}

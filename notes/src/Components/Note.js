@@ -1,19 +1,25 @@
-import React from 'react';
+import React from "react";
 
-const Note = ({notes, editTitle, editContent}) => {
-   
-    if (notes.length > 0) {
+const Note = ({ note, selectNote, selectedNote}) => {
+  //Make sure notes aren't empty
+  const handleClick = () => {
+    selectNote(note);
+  };
+  if (note) {
     return (
-        <div>
-            <div  className="note">
-                <h3>{notes[0].title}</h3>
-                <h4>{notes[0].content}</h4>
-            </div>
+      <div>
+        <div
+          onClick={handleClick}
+          className={note.id === selectedNote.id ? "note selectedNote" : "note"}
+        >
+          <h3>{note.title}</h3>
+          <h4>{note.content}</h4>
         </div>
-    )
-    } else {
-        return null
-    }
-}
+      </div>
+    );
+  } else {
+    return null;
+  }
+};
 
 export default Note;
