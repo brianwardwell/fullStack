@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 
 const EditNote = (props) => {
+  const [title, editTitle] = useState([])
+  const [content, editContent] = useState([])
   const handleNameChange = (e) => {
    
     props.setEditTitle(e.target.value);
