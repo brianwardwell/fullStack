@@ -3,7 +3,7 @@ import NewNote from "./Components/NewNote";
 import NotesList from "./Components/NotesList";
 import EditNote from "./Components/EditNote";
 import "./App.css";
-import dummyData from "./Components/dummyData";
+
 
 function App() {
   const [notes, setNotes] = useState([]);
@@ -14,7 +14,7 @@ function App() {
   useEffect(() => {
     fetch('/api/notes')
     .then(res => res.json())
-    .then(noteList => setNotes(noteList, () => console.log('Notes fetched')) )
+    .then(noteList => setNotes(noteList) )
   }, []);
   console.log('Second', notes)
 

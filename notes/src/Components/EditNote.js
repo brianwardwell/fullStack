@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 const EditNote = (props) => {
   const handleNameChange = (e) => {
@@ -8,7 +8,7 @@ const EditNote = (props) => {
     props.setEditContent(e.target.value);
   };
   const submitNoteHandler = () => {
-    
+
   }
 
   if (props.notes.length > 0) {
