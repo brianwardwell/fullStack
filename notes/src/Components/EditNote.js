@@ -1,18 +1,15 @@
 import React, { useState } from "react";
 
 const EditNote = (props) => {
-  const [title, editTitle] = useState([])
-  const [content, editContent] = useState([])
   const handleNameChange = (e) => {
-   
     props.setEditTitle(e.target.value);
-    
   };
   const handleContentChange = (e) => {
     props.setEditContent(e.target.value);
-   
   };
-
+  const submitNoteHandler = () => {
+    
+  }
 
   if (props.notes.length > 0) {
     return (
@@ -24,12 +21,11 @@ const EditNote = (props) => {
             placeholder="Title"
             name="name"
             onChange={handleNameChange}
-            
           />
           <br></br>
           {/* <button onClick={props.setEditTitle}>Save Name</button> */}
           <br></br>
-          
+
           <input
             id="content"
             type="text"
@@ -38,9 +34,8 @@ const EditNote = (props) => {
             onChange={handleContentChange}
           />
         </form>
-        <button onClick={props.editNotes}>Save Notes</button>
+        <button onClick={submitNoteHandler}>Save Notes</button>
       </div>
-      
     );
   } else {
     return null;

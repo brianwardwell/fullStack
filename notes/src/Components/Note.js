@@ -1,8 +1,10 @@
 import React from "react";
 
+//Note is an object with content, id and title
 const Note = ({ note, selectNote, selectedNote}) => {
   //Make sure notes aren't empty
   const handleClick = () => {
+    console.log('what note looks like', note)
     selectNote(note);
   };
   if (note) {
@@ -13,7 +15,7 @@ const Note = ({ note, selectNote, selectedNote}) => {
           className={note.id === selectedNote.id ? "note selectedNote" : "note"}
         >
           <h3>{note.title}</h3>
-          <h4>{note.content}</h4>
+          <p>{note.content}</p>
         </div>
       </div>
     );

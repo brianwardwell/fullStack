@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import NewNote from "./Components/NewNote";
 import NotesList from "./Components/NotesList";
 import EditNote from "./Components/EditNote";
@@ -11,16 +11,17 @@ function App() {
   const [editContent, setEditContent] = useState("Content");
   const [selectedNote, setSelectedNote] = useState({});
 
+  useEffect(() => {
+    fetch('/api/notes')
+    .then(res => res.json())
+    .then(noteList => setNotes(noteList, () => console.log('Notes fetched')) )
+  }, []);
+  console.log('Second', notes)
+
   //Button that creates a new note
   const createNewNote = () => {
-    setNotes([
-      ...notes,
-      { title: "Butts", content: "Notes", id: Math.random() },
-    ]);
-   
+    setNotes([{ title: "", content: "", id: null }, ...notes]);
   };
-
-
 
   const selectNote = (note) => {
     //Gets passed to Note.js
@@ -50,7 +51,7 @@ function App() {
       />
 
       <EditNote
-        selectedNote={selectedNote}
+        
         setEditTitle={setEditTitle}
         setEditContent={setEditContent}
         notes={notes}
