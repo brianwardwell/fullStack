@@ -3,16 +3,17 @@ import NewNote from "./Components/NewNote";
 import NotesList from "./Components/NotesList";
 import EditNote from "./Components/EditNote";
 import "./App.css";
+import axios from 'axios';
 
 
 function App() {
   const [notes, setNotes] = useState([]);
-  const [editTitle, setEditTitle] = useState("Title");
-  const [editContent, setEditContent] = useState("Content");
+  const [editTitle, setEditTitle] = useState("");
+  const [editContent, setEditContent] = useState("");
   const [selectedNote, setSelectedNote] = useState({});
 
   useEffect(() => {
-    fetch('/api/notes')
+    axios.get('/api/notes')
     .then(res => res.json())
     .then(noteList => setNotes(noteList) )
   }, []);
@@ -52,10 +53,10 @@ function App() {
 
       <EditNote
         
+        editTitle={editTitle}
         setEditTitle={setEditTitle}
         setEditContent={setEditContent}
         notes={notes}
-        editTitle={editTitle}
         editContent={editContent}
         editNotes={editNotes}
       />

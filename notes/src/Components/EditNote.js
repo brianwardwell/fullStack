@@ -3,12 +3,20 @@ import React from "react";
 const EditNote = (props) => {
   const handleNameChange = (e) => {
     props.setEditTitle(e.target.value);
+    console.log('name', e.target.value)
   };
   const handleContentChange = (e) => {
     props.setEditContent(e.target.value);
+    console.log('content', e.target.value)
   };
-  const submitNoteHandler = () => {
-
+  const submitNameHandler = (e) => {
+    e.preventDefault();
+    props.setEditTitle('')
+    console.log(props.editTitle)
+  }
+  const submitContentHandler = (e) => {
+    e.preventDefault();
+    props.setEditContent('')
   }
 
   if (props.notes.length > 0) {
@@ -21,7 +29,10 @@ const EditNote = (props) => {
             placeholder="Title"
             name="name"
             onChange={handleNameChange}
+            // value={props.editTitle}
           />
+          <br></br>
+          <button /*onClick={submitNameHandler}*/>Save Title</button>
           <br></br>
           {/* <button onClick={props.setEditTitle}>Save Name</button> */}
           <br></br>
@@ -32,9 +43,10 @@ const EditNote = (props) => {
             placeholder="Notes"
             name="notes"
             onChange={handleContentChange}
+            // value={props.editContent}
           />
         </form>
-        <button onClick={submitNoteHandler}>Save Notes</button>
+        <button /*onClick={submitContentHandler}*/>Save Notes</button>
       </div>
     );
   } else {
