@@ -3,25 +3,27 @@ import NewNote from "./Components/NewNote";
 import NotesList from "./Components/NotesList";
 import EditNote from "./Components/EditNote";
 import "./App.css";
-import dummyData from "./Components/dummyData";
+import axios from 'axios';
+
 
 function App() {
   const [notes, setNotes] = useState([]);
-  const [editTitle, setEditTitle] = useState("Title");
-  const [editContent, setEditContent] = useState("Content");
+  const [editTitle, setEditTitle] = useState("");
+  const [editContent, setEditContent] = useState("");
   const [selectedNote, setSelectedNote] = useState({});
+  const [count, setCount] = useState(0)
 
   useEffect(() => {
-    fetch('/api/notes')
-    .then(res => res.json())
-    .then(noteList => setNotes(noteList, () => console.log('Notes fetched')) )
-  }, []);
-  console.log('Second', notes)
+    axios.get('/api/notes')
+    .then(res => {
+      console.log('this is the response', res);
+      setNotes(res.data)
+    })
+    .catch(() => console.log("Couldn't get data"))
+  }, [count])
 
-  //Button that creates a new note
-  const createNewNote = () => {
-    setNotes([{ title: "", content: "", id: null }, ...notes]);
-  };
+
+ 
 
   const selectNote = (note) => {
     //Gets passed to Note.js
@@ -34,13 +36,35 @@ function App() {
   };
 
   const deleteAll = () => {
-    setNotes([]);
+    axios.delete('/api/notes')
+    .then(res => {
+      console.log('Deleted All', res)
+    })
+    .catch(() => console.log("Couldn't delete"))
+    setCount(count + 1)
   };
+
+  const newNote = {
+    title: 'Untitled',
+    content: ''
+  }
+
+  const createNewNote = () => {
+    axios.post('/api/notes', newNote)
+    .then(res => {
+      console.log("added", res.data)
+      console.log(notes)
+    })
+    setCount(count + 1)
+  };
+  console.log('COUNT', count)
 
   return (
     <div className="container">
       <NewNote
         notes={notes}
+        count={count}
+        setCount={setCount}
         createNewNote={createNewNote}
         deleteAll={deleteAll}
       />
@@ -52,10 +76,10 @@ function App() {
 
       <EditNote
         
+        editTitle={editTitle}
         setEditTitle={setEditTitle}
         setEditContent={setEditContent}
         notes={notes}
-        editTitle={editTitle}
         editContent={editContent}
         editNotes={editNotes}
       />

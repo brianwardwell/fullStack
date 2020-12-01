@@ -1,17 +1,20 @@
-import React from "react";
-import Note from "./Note";
+import Axios from "axios";
+import React, {useState} from "react";
+import axios from 'axios'
 
-const NewNote = ({ notes, createNewNote, deleteAll }) => {
-  const handleClick = () => {
-    createNewNote();
-  };
+
+const NewNote = ({ notes, deleteAll, count, setCount, createNewNote }) => {
+  //Button that creates a new note
+ 
+  
+  
   const handleDelete = () => {
     deleteAll();
   };
   console.log('Second', notes)
   return (
     <div className="newNote">
-      <button onClick={handleClick}>New Note</button>
+      <button onClick={createNewNote}>New Note</button>
       <button onClick={handleDelete}>Delete All</button>
     </div>
   );
