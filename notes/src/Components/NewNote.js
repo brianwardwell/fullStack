@@ -1,6 +1,6 @@
-import Axios from "axios";
-import React, {useState} from "react";
-import axios from 'axios'
+
+import React from "react";
+
 
 
 const NewNote = ({ notes, deleteAll, count, setCount, createNewNote }) => {
@@ -11,7 +11,7 @@ const NewNote = ({ notes, deleteAll, count, setCount, createNewNote }) => {
   const handleDelete = () => {
     deleteAll();
   };
-  console.log('Second', notes)
+  
   return (
     <div className="newNote">
       <button onClick={createNewNote}>New Note</button>

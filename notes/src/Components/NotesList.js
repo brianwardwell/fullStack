@@ -5,6 +5,7 @@ import Note from "./Note";
 // NotesList.js is the only access I have to note
 const NotesList = ({ notes, selectNote, selectedNote }) => {
   return (
+    //if notes exist, map over them and send them to Note comp
     <div className="notesList">
       {notes.length > 0
         ? notes.map((note) => {
