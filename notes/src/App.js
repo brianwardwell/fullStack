@@ -2,14 +2,13 @@ import React, { useEffect, useState } from "react";
 import NewNote from "./Components/NewNote";
 import NotesList from "./Components/NotesList";
 import EditNote from "./Components/EditNote";
+import BlankNote from './Components/BlankNote'
 import "./App.css";
 import axios from "axios";
 
 function App() {
   const [notes, setNotes] = useState([]);
-  const [editTitle, setEditTitle] = useState("");
-  const [editContent, setEditContent] = useState("");
-  const [selectedNote, setSelectedNote] = useState({});
+  const [selectedNote, setSelectedNote] = useState(undefined);
   const [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -28,10 +27,6 @@ function App() {
     //Gets passed to Note.js
     //Needed to set selectedId state
     setSelectedNote(note);
-  };
-
-  const editNotes = () => {
-    setNotes([{ title: editTitle, content: editContent }]);
   };
 
   const deleteAll = () => {
@@ -67,22 +62,23 @@ function App() {
         createNewNote={createNewNote}
         deleteAll={deleteAll}
       />
+
+      
+      {notes.length > 0 ? 
       <NotesList
         notes={notes}
         selectedNote={selectedNote}
         selectNote={selectNote}
-      />
-
-      <EditNote
-        editTitle={editTitle}
-        setEditTitle={setEditTitle}
-        setEditContent={setEditContent}
+      /> : <BlankNote/>}
+      
+      {selectedNote ?
+        <EditNote
+        selectedNote={selectedNote}
         notes={notes}
-        editContent={editContent}
-        editNotes={editNotes}
-      />
+      /> : <></>}
     </div>
   );
 }
 
 export default App;
+      

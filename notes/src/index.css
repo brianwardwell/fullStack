@@ -46,3 +46,7 @@ code {
 .selectedNote {
   border: 2px solid purple;
 }
+
+.createNote {
+  margin-top: 50px;
+}
