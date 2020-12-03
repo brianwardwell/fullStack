@@ -14,7 +14,7 @@ const Note = ({ note, selectNote, selectedNote}) => {
       <div>
         <div
           onClick={handleClick}
-          className={note.id === selectedNote.id ? "note selectedNote" : "note"}
+          className={selectedNote && note.id === selectedNote.id ? "note selectedNote" : "note"}
         >
           <h3>{note.title}</h3>
           <p>{note.content}</p>
