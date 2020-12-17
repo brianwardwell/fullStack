@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import {BrowseRouter as Router, Switch, Route, Link} from 'react-router-dom'
+import Login from './Components/Login'
 import NewNote from "./Components/NewNote";
 import NotesList from "./Components/NotesList";
 import EditNote from "./Components/EditNote";
@@ -47,6 +49,7 @@ function App() {
   };
 
   const createNewNote = () => {
+    console.log('Getting here?')
     axios.post("/api/notes", newNote).then((res) => {
     });
     //Using a counter to give the useEffect something to watch for so it automatically rerenders
@@ -55,6 +58,7 @@ function App() {
 
   return (
     <div className="container">
+      <Router>
       <NewNote
         notes={notes}
         count={count}
@@ -76,6 +80,7 @@ function App() {
         selectedNote={selectedNote}
         notes={notes}
       /> : <></>}
+      </Router>
     </div>
   );
 }

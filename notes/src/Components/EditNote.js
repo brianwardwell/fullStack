@@ -7,8 +7,8 @@ const EditNote = ({ selectedNote, notes }) => {
   //Sets the editNote state immediately to the currently selected note
   useEffect(() => {
     setEditNote({ title: selectedNote.title, content: selectedNote.content });
-    //Unsure about dependency array below. Had selectedNote.id but React threw a warning saying to include the below dependencies.
   }, [notes.id]);
+    //Unsure about dependency array below. Had selectedNote.id but React threw a warning saying to include the below dependencies.
 
   console.log("SELECTED", selectedNote);
   console.log("EDIT NOTE", editNote);
