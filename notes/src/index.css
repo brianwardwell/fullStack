@@ -50,3 +50,7 @@ code {
 .createNote {
   margin-top: 50px;
 }
+
+button {
+  background-color: rgb(255, 0, 191);
+}

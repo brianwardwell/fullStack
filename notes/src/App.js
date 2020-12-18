@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import {BrowseRouter as Router, Switch, Route, Link} from 'react-router-dom'
-import Login from './Components/Login'
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Login from "./Components/Login";
+import Home from "./Components/Home";
 import NewNote from "./Components/NewNote";
 import NotesList from "./Components/NotesList";
 import EditNote from "./Components/EditNote";
-import BlankNote from './Components/BlankNote'
+import BlankNote from "./Components/BlankNote";
 import "./App.css";
 import axios from "axios";
 
@@ -49,9 +50,8 @@ function App() {
   };
 
   const createNewNote = () => {
-    console.log('Getting here?')
-    axios.post("/api/notes", newNote).then((res) => {
-    });
+    console.log("Getting here?");
+    axios.post("/api/notes", newNote).then((res) => {});
     //Using a counter to give the useEffect something to watch for so it automatically rerenders
     setCount(count + 1);
   };
@@ -59,31 +59,39 @@ function App() {
   return (
     <div className="container">
       <Router>
-      <NewNote
-        notes={notes}
-        count={count}
-        setCount={setCount}
-        createNewNote={createNewNote}
-        deleteAll={deleteAll}
-      />
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/notes">
+            <NewNote
+              notes={notes}
+              count={count}
+              setCount={setCount}
+              createNewNote={createNewNote}
+              deleteAll={deleteAll}
+            />
 
-      
-      {notes.length > 0 ? 
-      <NotesList
-        notes={notes}
-        selectedNote={selectedNote}
-        selectNote={selectNote}
-      /> : <BlankNote/>}
-      
-      {selectedNote ?
-        <EditNote
-        selectedNote={selectedNote}
-        notes={notes}
-      /> : <></>}
+            {notes.length > 0 ? (
+              <NotesList
+                notes={notes}
+                selectedNote={selectedNote}
+                selectNote={selectNote}
+              />
+            ) : (
+              <BlankNote />
+            )}
+
+            {selectedNote ? (
+              <EditNote selectedNote={selectedNote} notes={notes} />
+            ) : (
+              <></>
+            )}
+          </Route>
+        </Switch>
       </Router>
     </div>
   );
 }
 
 export default App;
-      
