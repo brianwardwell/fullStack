@@ -6,6 +6,7 @@ import NewNote from "./Components/NewNote";
 import NotesList from "./Components/NotesList";
 import EditNote from "./Components/EditNote";
 import BlankNote from "./Components/BlankNote";
+import Register from "./Components/Register";
 import "./App.css";
 import axios from "axios";
 
@@ -62,6 +63,12 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Home />
+          </Route>
+          <Route path="/signIn">
+            <Register />
+          </Route>
+          <Route path="/login">
+            <Login />
           </Route>
           <Route path="/notes">
             <NewNote
