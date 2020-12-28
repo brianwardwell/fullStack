@@ -15,23 +15,23 @@ const Register  = () => {
         <div>
             <h1>Register</h1>
             <form>
-                <label for="username">
-                <input
-                id="name"
-                type="text"
-                name="name"
-                onChange={handleNameChange}
-                value={regName.username}
-                />
+                <label>
+                    Username:
+                    <input
+                    type="text"
+                    name="name"
+                    onChange={handleNameChange}
+                    value={regName.username}
+                    />
                 </label>
-                <label for="password">
-                <input
-                id="password"
-                type="text"
-                name="password"
-                onChange={handlePasswordChange}
-                value={regName.password}
-                />
+                <label>
+                    Password:
+                    <input
+                    type="text"
+                    name="password"
+                    onChange={handlePasswordChange}
+                    value={regName.password}
+                    />
                 </label>
             </form>
         </div>
