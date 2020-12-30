@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import Login from "./Components/Login";
 import Home from "./Components/Home";
 import NewNote from "./Components/NewNote";
@@ -59,18 +59,16 @@ function App() {
 
   return (
     <div className="container">
-      <Router>
         <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/signIn">
-            <Register />
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/notes">
+          <Route exact path="/" component={Home}/>
+            
+          
+          <Route path="/users/register" component={Register}/>
+            
+         
+          <Route path="/users/login" component={Login}/>
+           
+          <Route path="/users/:userId/notes">
             <NewNote
               notes={notes}
               count={count}
@@ -95,8 +93,8 @@ function App() {
               <></>
             )}
           </Route>
+          <Route path="*" component={() => "404 Page Not Found"}/>
         </Switch>
-      </Router>
     </div>
   );
 }

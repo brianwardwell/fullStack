@@ -1,27 +1,38 @@
 import React, {useState} from 'react';
+import axios from 'axios';
+import { Redirect, useHistory } from 'react-router-dom';
 
 const Register  = () => {
-    const [regName, setRegName] = useState({ username: "", password: ""})
-
+    const [regCred, setRegCred] = useState({ username: "", password: ""})
+    const history = useHistory();
     const handleNameChange = (e) => {
-        setRegName({ ...regName, username: e.target.value })
-        console.log("Name", regName.username)
+        setRegCred({ ...regCred, username: e.target.value })
+        console.log("Name", regCred.username)
     }
     const handlePasswordChange = (e) => {
-        setRegName({ ...regName, password: e.target.value })
-        console.log("Password", regName.password)
+        setRegCred({ ...regCred, password: e.target.value })
+        console.log("Password", regCred.password)
+    }
+    //changed url from /users to /users/signIn, will do same for login
+    const submitNewUser = (e) => {
+        e.preventDefault();
+        axios.post('/api/users/register', regCred);
+        history.push('/users/login')
+        console.log("HISTORY", history)
+        setRegCred({ username: "", password: "" })
+        
     }
     return (
         <div>
             <h1>Register</h1>
-            <form>
+            <form onSubmit={submitNewUser}>
                 <label>
                     Username:
                     <input
                     type="text"
                     name="name"
                     onChange={handleNameChange}
-                    value={regName.username}
+                    value={regCred.username}
                     />
                 </label>
                 <label>
@@ -30,9 +41,10 @@ const Register  = () => {
                     type="text"
                     name="password"
                     onChange={handlePasswordChange}
-                    value={regName.password}
+                    value={regCred.password}
                     />
                 </label>
+                <input  type="submit" value="Submit"/>
             </form>
         </div>
     )

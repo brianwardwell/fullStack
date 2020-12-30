@@ -12,9 +12,15 @@ const Login = () => {
         setLoginCred({...loginCred, password: e.target.value})
     }
 
+    const submitLogin = (e) => {
+        console.log("LOGIN SUBMISSION", loginCred)
+        e.preventDefault();
+    }
+
     return (
     <div>
-        <form>
+        <form onSubmit={submitLogin}>
+            <h1>Login</h1>
             <label>
                 Username:
                 <input
@@ -33,6 +39,7 @@ const Login = () => {
                 onChange={handlePasswordChange}
                 />
             </label>
+            <input type="submit" value="Submit"/>
         </form>
     </div>
     )
