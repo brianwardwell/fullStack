@@ -59,42 +59,40 @@ function App() {
 
   return (
     <div className="container">
-        <Switch>
-          <Route exact path="/" component={Home}/>
-            
-          
-          <Route path="/users/register" component={Register}/>
-            
-         
-          <Route path="/users/login" component={Login}/>
-           
-          <Route path="/users/:userId/notes">
-            <NewNote
+      <Switch>
+        <Route exact path="/" component={Home} />
+
+        <Route path="/users/register" component={Register} />
+
+        <Route path="/users/login" component={Login} />
+
+        <Route path="/users/:userId/notes">
+          <NewNote
+            notes={notes}
+            count={count}
+            setCount={setCount}
+            createNewNote={createNewNote}
+            deleteAll={deleteAll}
+          />
+
+          {notes.length > 0 ? (
+            <NotesList
               notes={notes}
-              count={count}
-              setCount={setCount}
-              createNewNote={createNewNote}
-              deleteAll={deleteAll}
+              selectedNote={selectedNote}
+              selectNote={selectNote}
             />
+          ) : (
+            <BlankNote />
+          )}
 
-            {notes.length > 0 ? (
-              <NotesList
-                notes={notes}
-                selectedNote={selectedNote}
-                selectNote={selectNote}
-              />
-            ) : (
-              <BlankNote />
-            )}
-
-            {selectedNote ? (
-              <EditNote selectedNote={selectedNote} notes={notes} />
-            ) : (
-              <></>
-            )}
-          </Route>
-          <Route path="*" component={() => "404 Page Not Found"}/>
-        </Switch>
+          {selectedNote ? (
+            <EditNote selectedNote={selectedNote} notes={notes} />
+          ) : (
+            <></>
+          )}
+        </Route>
+        <Route path="*" component={() => "404 Page Not Found"} />
+      </Switch>
     </div>
   );
 }

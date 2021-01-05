@@ -16,7 +16,7 @@ const Register  = () => {
     //changed url from /users to /users/signIn, will do same for login
     const submitNewUser = (e) => {
         e.preventDefault();
-        axios.post('/api/users/register', regCred);
+        axios.post('/api/auth/signIn', regCred);
         history.push('/users/login')
         console.log("HISTORY", history)
         setRegCred({ username: "", password: "" })

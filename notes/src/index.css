@@ -52,5 +52,12 @@ code {
 }
 
 button {
-  background-color: rgb(255, 0, 191);
+  background-color: rgb(255, 0, 191); 
+}
+
+.buttonContainer {
+  display: flex;
+  width: 20vw;
+  justify-content: space-evenly;
+  background-color: blue;
 }
