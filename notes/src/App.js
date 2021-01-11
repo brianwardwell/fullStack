@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
+import PrivateRoute from './Components/PrivateRoute';
 import Login from "./Components/Login";
 import Home from "./Components/Home";
 import NewNote from "./Components/NewNote";
@@ -66,7 +67,7 @@ function App() {
 
         <Route path="/users/login" component={Login} />
 
-        <Route path="/users/:userId/notes">
+        <PrivateRoute path="/users/:userId/notes">
           <NewNote
             notes={notes}
             count={count}
@@ -90,7 +91,7 @@ function App() {
           ) : (
             <></>
           )}
-        </Route>
+        </PrivateRoute>
         <Route path="*" component={() => "404 Page Not Found"} />
       </Switch>
     </div>
