@@ -53,11 +53,12 @@ code {
 
 button {
   background-color: rgb(255, 0, 191); 
+  width: 8vw;
 }
 
 .buttonContainer {
   display: flex;
   width: 20vw;
   justify-content: space-evenly;
-  background-color: blue;
+  background-color: blue; 
 }

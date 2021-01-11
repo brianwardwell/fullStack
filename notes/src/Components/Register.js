@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import axios from 'axios';
-import { Redirect, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+
+//Register does NOT require axiosWithAuth
 
 const Register  = () => {
     const [regCred, setRegCred] = useState({ username: "", password: ""})
