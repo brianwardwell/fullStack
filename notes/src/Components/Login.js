@@ -6,10 +6,9 @@ import axios from "axios";
 
 const Login = () => {
   const [loginCred, setLoginCred] = useState({ username: "", password: "" });
-
+  const history = useHistory();
   const handleNameChange = (e) => {
     setLoginCred({ ...loginCred, username: e.target.value });
-    console.log("EVENT", e.target.value);
   };
 
   const handlePasswordChange = (e) => {
@@ -17,17 +16,13 @@ const Login = () => {
   };
 
   const submitLogin = (e) => {
-    console.log("LOGIN SUBMISSION", loginCred);
     e.preventDefault();
-    console.log("HEEEEERe")
     axios.post('/api/auth/login', loginCred)
     .then(res => { 
-        console.log("DATA TOKEN", localStorage.token)
-        console.log("TOKEN", localStorage)
-        localStorage.setItem('token', res.data.token)
-        
+        localStorage.setItem('token', res.data.token)  
+        history.push('/users/notes') 
     })
-    .catch(err => console.log("ERROR"))
+    .catch(err => console.log("ERROR"));
   };
     
 

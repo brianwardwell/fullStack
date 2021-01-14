@@ -9,11 +9,9 @@ const Register  = () => {
     const history = useHistory();
     const handleNameChange = (e) => {
         setRegCred({ ...regCred, username: e.target.value })
-        console.log("Name", regCred.username)
     }
     const handlePasswordChange = (e) => {
         setRegCred({ ...regCred, password: e.target.value })
-        console.log("Password", regCred.password)
     }
     //changed url from /users to /users/signIn, will do same for login
     const submitNewUser = (e) => {

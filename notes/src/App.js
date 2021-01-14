@@ -8,6 +8,7 @@ import NotesList from "./Components/NotesList";
 import EditNote from "./Components/EditNote";
 import BlankNote from "./Components/BlankNote";
 import Register from "./Components/Register";
+import axiosWithAuth from './axiosWithAuth'
 import "./App.css";
 import axios from "axios";
 
@@ -17,13 +18,14 @@ function App() {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    axios
-      .get("/api/notes")
+    console.log("TOKEN", localStorage.token)
+    axiosWithAuth()
+      .get("/api/users/notes")
       .then((res) => {
-        console.log("this is the response", res);
+        console.log("GET RESPONSE", res);
         setNotes(res.data);
       })
-      .catch(() => console.log("Couldn't get data"));
+      .catch(() => console.log("Couldn't finish UseEffect"));
   }, [count]);
 
   //Note will receive the note from NotesList after it maps
@@ -34,16 +36,28 @@ function App() {
     setSelectedNote(note);
   };
 
-  const deleteAll = () => {
-    axios
-      .delete("/api/notes")
-      .then((res) => {
-        console.log("Deleted All", res);
-      })
-      .catch(() => console.log("Couldn't delete"));
-    //Using a counter to give the useEffect something to watch for so it automatically rerenders
-    setCount(count + 1);
+  const deleteSelected = (note) => {
+    
+    axiosWithAuth()
+    .delete(`api/users/notes/${note.id}`)
+    .then(count => {
+      count ? console.log(`Successfully deleted ${count} note`)
+      : console.log("Couldn't delete that note")
+    })
+    .catch(err => console.log(err))
   };
+
+  /***** Keeping deleteAll for dev purposes, remove when deploying *****/
+  // const deleteAll = () => {
+  //   axiosWithAuth()
+  //     .delete("/api/users/notes")
+  //     .then((res) => {
+  //       console.log("Deleted All", res);
+  //     })
+  //     .catch((err) => console.log({message: `Couldnt delete because ${err}`}));
+  //   //Using a counter to give the useEffect something to watch for so it automatically rerenders
+  //   setCount(count + 1);
+  // };
 
   //Creating a new note object that posts immediately to the db after the newNote button is clicked
   const newNote = {
@@ -52,11 +66,16 @@ function App() {
   };
 
   const createNewNote = () => {
-    console.log("Getting here?");
-    axios.post("/api/notes", newNote).then((res) => {});
+    console.log("GETTING TO NEW NOTE POST?");
+    axiosWithAuth()
+    .post("/api/users/notes", newNote).then((res) => {
+      res.status(200).json({message: "Note posted"})
+    })
+    .catch(err => console.log("POST failed", err))
     //Using a counter to give the useEffect something to watch for so it automatically rerenders
+    
     setCount(count + 1);
-  };
+  }; 
 
   return (
     <div className="container">
@@ -67,13 +86,13 @@ function App() {
 
         <Route path="/users/login" component={Login} />
 
-        <PrivateRoute path="/users/:userId/notes">
+        <PrivateRoute path="/users/notes">
           <NewNote
             notes={notes}
             count={count}
             setCount={setCount}
             createNewNote={createNewNote}
-            deleteAll={deleteAll}
+            deleteSelected={deleteSelected}
           />
 
           {notes.length > 0 ? (
