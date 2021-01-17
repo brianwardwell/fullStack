@@ -9,6 +9,10 @@ import "./App.css";
 
 function App () {
 
+  const background = {
+    backgroundImage: `url('https://unsplash.com/photos/8u2bw82Mve0')`
+  }
+
   return (
     <div className="container">
       <Switch>

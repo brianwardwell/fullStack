@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
-    <div>
+    <div className='homeBackground'>
       <div className="buttonContainer">
       <button>
         <Link to="/users/register">Sign Up</Link>
