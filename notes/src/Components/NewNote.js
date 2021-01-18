@@ -11,7 +11,7 @@ const NewNote = ({ deleteSelected, createNewNote, selectedNote, getNotes }) => {
   return (
     <div className="newNote">
       <button onClick={createNewNote}>New Note</button>
-      <button onClick={handleDelete}>Delete All</button>
+      <button onClick={handleDelete}>Delete Note</button>
     </div>
   );
 };
