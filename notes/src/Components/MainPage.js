@@ -34,7 +34,7 @@ const MainPage = () => {
     };
   
     const deleteSelected = (note) => {
-      
+      note ?
       axiosWithAuth()
       .delete(`api/users/notes/${note.id}`)
       .then(count => {
@@ -42,7 +42,10 @@ const MainPage = () => {
         : console.log("Couldn't delete that note")
       })
       .catch(err => console.log("BUTTS", err))
+      : console.log('No note selected')
+      setCount(count + 1)
     };
+      
   
     /***** Keeping deleteAll for dev purposes, remove when deploying *****/
     // const deleteAll = () => {

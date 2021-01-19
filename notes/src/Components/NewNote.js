@@ -1,7 +1,7 @@
 import React from "react";
 
 
-const NewNote = ({ deleteSelected, createNewNote, selectedNote, getNotes }) => {
+const NewNote = ({ deleteSelected, createNewNote, selectedNote}) => {
   //Button that creates a new note
   console.log("WHAT IS SELECTED NOTE", selectedNote)
   const handleDelete = () => {
