@@ -100,7 +100,7 @@ const MainPage = () => {
           )}
 
           {selectedNote ? (
-            <EditNote selectedNote={selectedNote} notes={notes} />
+            <EditNote selectedNote={selectedNote} notes={notes} count={count} setCount={setCount}/>
           ) : (
             <></>
           )}

@@ -1,14 +1,15 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import axiosWithAuth from "../axiosWithAuth";
 
-const EditNote = ({ selectedNote, notes }) => {
+const EditNote = ({ selectedNote, notes, count, setCount }) => {
   const [editNote, setEditNote] = useState({ title: "", content: "" });
 
   //Sets the editNote state immediately to the currently selected note
   useEffect(() => {
     setEditNote({ title: selectedNote.title, content: selectedNote.content });
   }, [notes.id]);
-    //Unsure about dependency array below. Had selectedNote.id but React threw a warning saying to include the below dependencies.
+    //Unsure about dependency array above. Had selectedNote.id but React threw a warning saying to include  dependencies.
 
   console.log("SELECTED", selectedNote);
   console.log("EDIT NOTE", editNote);
@@ -23,10 +24,13 @@ const EditNote = ({ selectedNote, notes }) => {
     console.log("content", e.target.value);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     const { id } = selectedNote;
     console.log("hSubmit ID", id);
-    axios.put(`/api/notes/${id}`, editNote);
+    axiosWithAuth()
+    .put(`/api/users/notes/${id}`, editNote);
+    setCount(count + 1)
     //Put requests don't return res??  Tried logging it but wouldn't work
   };
 
@@ -59,7 +63,7 @@ const EditNote = ({ selectedNote, notes }) => {
             value={editNote.content}
           />
         </form>
-        <button>Save Notes</button>
+        <button type="submit" value="Submit">Save Notes</button>
       </div>
     );
   } else {
