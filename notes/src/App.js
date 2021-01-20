@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Switch, Route } from "react-router-dom";
 import PrivateRoute from './Components/PrivateRoute';
 import Login from "./Components/Login";
@@ -8,10 +8,6 @@ import MainPage from "./Components/MainPage"
 import "./App.css";
 
 function App () {
-
-  const background = {
-    backgroundImage: `url('https://unsplash.com/photos/8u2bw82Mve0')`
-  }
 
   return (
     <div className="container">

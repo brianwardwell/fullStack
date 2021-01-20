@@ -13,20 +13,20 @@ code {
 }
 
 .newNote {
-  width: 16vw;
+  width: 13vw;
   height: 100vh;
   border: 1px solid black;
 
 }
 
 .notesList {
-  width: 24vw;
+  width: 18vw;
   height: 100vh;
   border: 1px solid pink;
 }
 
 .editNote {
-  width: 59vw;
+  width: 68vw;
   height: 100vh;
   border: 1px solid blue;
 }
@@ -53,7 +53,7 @@ code {
 
 button {
   background-color: rgb(255, 0, 191); 
-  width: 8vw;
+  width: 12vw;
 }
 
 .buttonContainer {
@@ -61,6 +61,10 @@ button {
   width: 20vw;
   justify-content: space-evenly;
   background-color: blue; 
+}
+
+#note {
+  overflow-wrap: break-word;
 }
 
 

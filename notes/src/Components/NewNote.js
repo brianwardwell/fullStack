@@ -3,7 +3,6 @@ import React from "react";
 
 const NewNote = ({ deleteSelected, createNewNote, selectedNote}) => {
   //Button that creates a new note
-  console.log("WHAT IS SELECTED NOTE", selectedNote)
   const handleDelete = () => {
     deleteSelected(selectedNote);
   };
@@ -11,6 +10,7 @@ const NewNote = ({ deleteSelected, createNewNote, selectedNote}) => {
   return (
     <div className="newNote">
       <button onClick={createNewNote}>New Note</button>
+      <br></br>
       <button onClick={handleDelete}>Delete Note</button>
     </div>
   );

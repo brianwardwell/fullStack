@@ -6,7 +6,9 @@ import { useHistory } from 'react-router-dom';
 
 const Register  = () => {
     const [regCred, setRegCred] = useState({ username: "", password: ""})
+
     const history = useHistory();
+
     const handleNameChange = (e) => {
         setRegCred({ ...regCred, username: e.target.value })
     }
@@ -16,8 +18,17 @@ const Register  = () => {
     //changed url from /users to /users/signIn, will do same for login
     const submitNewUser = (e) => {
         e.preventDefault();
-        axios.post('/api/auth/signIn', regCred);
-        history.push('/users/login')
+        axios.post('/api/auth/signIn', regCred)
+        .then(res => {
+            console.log("RES STATUS", res.status)
+            if (res.status === 200){
+                history.push('/users/login')
+            } else{
+                const fail = document.createElement('p').innerText('This failed!')
+                document.body.appendChild(fail)
+            }
+        })
+        
         console.log("HISTORY", history)
         setRegCred({ username: "", password: "" })
         
