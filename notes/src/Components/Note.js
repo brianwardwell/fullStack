@@ -5,8 +5,6 @@ const Note = ({ note, selectNote, selectedNote}) => {
  
   //This will set the clicked note into selectedNote state
   const handleClick = () => {
-    console.log('what note looks like', note)
-    console.log("note title Length", note.title.length)
     selectNote(note);
   };
   //If selectedNote.id matches one of the note.id's, it will apply selectedNote className

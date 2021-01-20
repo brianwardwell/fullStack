@@ -10,23 +10,18 @@ const EditNote = ({ selectedNote, notes, count, setCount }) => {
   }, [selectedNote.title, selectedNote.content]);
   //Unsure about dependency array above. Had selectedNote.id but React threw a warning saying to include  dependencies.
 
-  console.log("SELECTED", selectedNote);
-  console.log("EDIT NOTE", editNote);
   //Spreading the editNote in populates EditNote inputs with the current selectedNote title value
   const handleNameChange = (e) => {
     setEditNote({ ...editNote, title: e.target.value });
-    console.log("name", e.target.value);
   };
   //Spreading the editNote in populates EditNote inputs with the current selectedNote content value
   const handleContentChange = (e) => {
     setEditNote({ ...editNote, content: e.target.value });
-    console.log("content", e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const { id } = selectedNote;
-    console.log("hSubmit ID", id);
     axiosWithAuth().put(`/api/users/notes/${id}`, editNote);
     setCount(count + 1);
   };

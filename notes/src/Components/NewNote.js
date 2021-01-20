@@ -1,10 +1,12 @@
 import React from "react";
 
 
-const NewNote = ({ deleteSelected, createNewNote, selectedNote}) => {
+const NewNote = ({ deleteSelected, createNewNote, selectedNote, notes}) => {
   //Button that creates a new note
+  console.log("SELECTED NOTE", selectedNote)
   const handleDelete = () => {
-    deleteSelected(selectedNote);
+    
+    deleteSelected(selectedNote, notes);
   };
 
   return (
