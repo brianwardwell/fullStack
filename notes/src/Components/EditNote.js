@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axiosWithAuth from "../axiosWithAuth";
 
-const EditNote = ({ selectedNote, notes, count, setCount }) => {
+const EditNote = ({ selectedNote, notes, updateNote}) => {
   const [editNote, setEditNote] = useState({ title: "", content: "" });
 
   //Sets the editNote state immediately to the currently selected note
@@ -21,9 +21,10 @@ const EditNote = ({ selectedNote, notes, count, setCount }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { id } = selectedNote;
-    axiosWithAuth().put(`/api/users/notes/${id}`, editNote);
-    setCount(count + 1);
+    // const { id } = selectedNote;
+    // axiosWithAuth().put(`/api/users/notes/${id}`, editNote);
+    updateNote(selectedNote, notes, editNote)
+
   };
 
   if (notes.length > 0) {

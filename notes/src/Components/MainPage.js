@@ -26,7 +26,7 @@ const MainPage = () => {
   // }, []);
 
   console.log("New Notes!!!", notes);
-
+  console.log("SELECTED NOTE", selectedNote)
   // notes = [{id:2, title:stuff}]
   // notes = {id_2: {title:stuff}}
   // var myNote = notesid_2
@@ -52,7 +52,6 @@ const MainPage = () => {
     // const newNotes = notes.filter(n => n.id !== note.id);
     // setNotes(newNotes);
     const newNotes = notes.filter((note) => note.id !== selNote.id);
-    console.log("WHAT IS NEW NOTES", newNotes)
     setNotes(newNotes);
   };
 
@@ -71,7 +70,7 @@ const MainPage = () => {
   //Creating a new note object that posts immediately to the db after the newNote button is clicked
   // Using notes.length as a placeholder fro id until i complete front end
   const newNote = {
-    id: notes.length + 1,
+    id: notes.length + 4,
     title: "Untitled",
     content: "...",
   };
@@ -89,12 +88,25 @@ const MainPage = () => {
     setNotes([...notes, newNote]);
   };
 
+  const updateNote = (selNote, notes, editedNote) => {
+    let updatedNotes = [...notes]
+    const noteIndex = notes.findIndex(elem => elem.id === selNote.id)
+    console.log('NOTE INDEX', noteIndex)
+    updatedNotes[noteIndex] = {...updatedNotes[noteIndex], title: editedNote.title, content: editedNote.content}
+    console.log("UPDATED NOTES", updatedNotes)
+    setNotes(updatedNotes)
+    }
+    
+  
+
   return (
     <div className="container">
-      <NewNote createNewNote={createNewNote} 
-      deleteSelected={deleteSelected} 
-      selectedNote={selectedNote}
-      notes={notes}/>
+      <NewNote
+        createNewNote={createNewNote}
+        deleteSelected={deleteSelected}
+        selectedNote={selectedNote}
+        notes={notes}
+      />
 
       {notes.length > 0 ? (
         <NotesList
@@ -107,7 +119,11 @@ const MainPage = () => {
       )}
 
       {selectedNote ? (
-        <EditNote selectedNote={selectedNote} notes={notes} />
+        <EditNote
+          selectedNote={selectedNote}
+          notes={notes}
+          updateNote={updateNote}
+        />
       ) : (
         <></>
       )}
