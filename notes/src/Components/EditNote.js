@@ -31,7 +31,7 @@ const EditNote = ({ selectedNote, notes, updateNote}) => {
     return (
       <div className="editNote">
         <form onSubmit={handleSubmit}>
-          <input
+          <textarea
             id="name"
             type="text"
             placeholder="Title"
@@ -42,9 +42,9 @@ const EditNote = ({ selectedNote, notes, updateNote}) => {
           <br></br>
           <br></br>
 
-          <input
+          <textarea
             id="content"
-            type="text"
+            type="textarea"
             placeholder="Notes"
             name="notes"
             onChange={handleContentChange}

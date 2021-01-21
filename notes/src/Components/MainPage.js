@@ -26,7 +26,7 @@ const MainPage = () => {
   // }, []);
 
   console.log("New Notes!!!", notes);
-  console.log("SELECTED NOTE", selectedNote)
+  
   // notes = [{id:2, title:stuff}]
   // notes = {id_2: {title:stuff}}
   // var myNote = notesid_2
@@ -89,15 +89,15 @@ const MainPage = () => {
   };
 
   const updateNote = (selNote, notes, editedNote) => {
-    let updatedNotes = [...notes]
-    const noteIndex = notes.findIndex(elem => elem.id === selNote.id)
-    console.log('NOTE INDEX', noteIndex)
-    updatedNotes[noteIndex] = {...updatedNotes[noteIndex], title: editedNote.title, content: editedNote.content}
-    console.log("UPDATED NOTES", updatedNotes)
-    setNotes(updatedNotes)
-    }
-    
-  
+    let updatedNotes = [...notes];
+    const noteIndex = notes.findIndex((elem) => elem.id === selNote.id);
+    updatedNotes[noteIndex] = {
+      ...updatedNotes[noteIndex],
+      title: editedNote.title,
+      content: editedNote.content,
+    };
+    setNotes(updatedNotes);
+  };
 
   return (
     <div className="container">

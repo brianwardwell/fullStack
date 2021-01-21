@@ -49,7 +49,7 @@ const Register  = () => {
                 <label>
                     Password:
                     <input
-                    type="text"
+                    type="password"
                     name="password"
                     onChange={handlePasswordChange}
                     value={regCred.password}

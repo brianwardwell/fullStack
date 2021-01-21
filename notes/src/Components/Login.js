@@ -42,7 +42,7 @@ const Login = () => {
         <label>
           Password:
           <input
-            type="text"
+            type="password"
             name="name"
             value={loginCred.password}
             onChange={handlePasswordChange}
