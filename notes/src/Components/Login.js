@@ -16,13 +16,14 @@ const Login = () => {
   };
 
   const submitLogin = (e) => {
-    e.preventDefault();
-    axios.post('/api/auth/login', loginCred)
-    .then(res => { 
-        localStorage.setItem('token', res.data.token)  
-        history.push('/users/notes') 
-    })
-    .catch(err => console.log("ERROR"));
+    // e.preventDefault();
+    // axios.post('/api/auth/login', loginCred)
+    // .then(res => { 
+    //     localStorage.setItem('token', res.data.token)  
+    //     history.push('/users/notes') 
+    // })
+    // .catch(err => console.log("ERROR"));
+    history.push('/users/notes') 
   };
     
 

@@ -34,6 +34,7 @@ code {
 .container {
   display: flex;
   /* display: inline; */
+  margin: 0px auto 28px auto;
 }
 
 .note {
@@ -56,15 +57,37 @@ button {
   width: 12vw;
 }
 
-.buttonContainer {
+/* .buttonContainer {
   display: flex;
   width: 20vw;
   justify-content: space-evenly;
   background-color: blue; 
-}
+} */
 
 #note {
   overflow-wrap: break-word;
 }
 
+.homeButtons {
+  display: flex;
+  justify-content: center;
+  border: 2px solid blue;
+  flex-direction: column;
+  max-width: 300px;
+  min-width: 250px;
 
+}
+  
+
+.backgroundImage {
+  /* background-image: URL('https://unsplash.com/photos/mqN3ioSo0nQ') */
+  background-color: green;
+}
+
+/* used this for the buttonGroup
+  margin: 20vh 0vw 0vh 38vw;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-top: 200px;
+  padding-bottom: 200px;
+  background-color: rgb(238, 241, 241); */

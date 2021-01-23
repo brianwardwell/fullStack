@@ -17,19 +17,18 @@ const Register  = () => {
     }
     //changed url from /users to /users/signIn, will do same for login
     const submitNewUser = (e) => {
-        e.preventDefault();
-        axios.post('/api/auth/signIn', regCred)
-        .then(res => {
-            console.log("RES STATUS", res.status)
-            if (res.status === 200){
-                history.push('/users/login')
-            } else{
-                const fail = document.createElement('p').innerText('This failed!')
-                document.body.appendChild(fail)
-            }
-        })
-        
-        console.log("HISTORY", history)
+        // e.preventDefault();
+        // axios.post('/api/auth/signIn', regCred)
+        // .then(res => {
+        //     console.log("RES STATUS", res.status)
+        //     if (res.status === 200){
+        //         history.push('/users/login')
+        //     } else{
+        //         const fail = document.createElement('p').innerText('This failed!')
+        //         document.body.appendChild(fail)
+        //     }
+        // })
+        history.push('/users/login')
         setRegCred({ username: "", password: "" })
         
     }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axiosWithAuth from "../axiosWithAuth";
+import TextField from '@material-ui/core/TextField'
 
 const EditNote = ({ selectedNote, notes, updateNote}) => {
   const [editNote, setEditNote] = useState({ title: "", content: "" });
@@ -31,7 +32,7 @@ const EditNote = ({ selectedNote, notes, updateNote}) => {
     return (
       <div className="editNote">
         <form onSubmit={handleSubmit}>
-          <textarea
+          <TextField
             id="name"
             type="text"
             placeholder="Title"
@@ -42,7 +43,7 @@ const EditNote = ({ selectedNote, notes, updateNote}) => {
           <br></br>
           <br></br>
 
-          <textarea
+          <TextField
             id="content"
             type="textarea"
             placeholder="Notes"
