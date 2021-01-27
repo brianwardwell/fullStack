@@ -52,10 +52,10 @@ code {
   margin-top: 50px;
 }
 
-button {
-  background-color: rgb(255, 0, 191); 
+/* button {
+  background-color: rgb(65, 10, 90); 
   width: 12vw;
-}
+} */
 
 /* .buttonContainer {
   display: flex;
@@ -68,7 +68,7 @@ button {
   overflow-wrap: break-word;
 }
 
-.homeButtons {
+/* .homeButtons {
   display: flex;
   justify-content: center;
   border: 2px solid blue;
@@ -76,7 +76,7 @@ button {
   max-width: 300px;
   min-width: 250px;
 
-}
+} */
   
 
 .backgroundImage {
