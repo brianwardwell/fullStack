@@ -5,7 +5,7 @@ import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import backImage from "../images/EClonePic_Fence.jpg";
+import backImage from "../images/prism.png";
 // import Paper from "@material-ui/core/Paper"
 
 //link for a background img: <img src="https://unsplash.com/photos/8u2bw82Mve0"/>

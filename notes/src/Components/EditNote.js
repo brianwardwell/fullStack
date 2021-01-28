@@ -1,10 +1,29 @@
 import React, { useEffect, useState } from "react";
 import axiosWithAuth from "../axiosWithAuth";
 import TextField from '@material-ui/core/TextField'
+import { makeStyles } from '@material-ui/core/styles'
+import Button from '@material-ui/core/Button'
+
+const useStyles = makeStyles(() => ({
+  box: {
+    // position: 'relative',
+    paddingLeft: '35px',
+    paddingTop: '40px',
+    width: '90%',
+    overflowWrap: 'break-word',
+    marginBottom: '30px'
+  },
+  button: {
+    marginLeft: '35px',
+    marginTop: '50px',
+    backgroundColor: "rgb(135,63, 163)",
+    color: 'white'
+  }
+}))
 
 const EditNote = ({ selectedNote, notes, updateNote}) => {
   const [editNote, setEditNote] = useState({ title: "", content: "" });
-
+  const style = useStyles();
   //Sets the editNote state immediately to the currently selected note
   useEffect(() => {
     setEditNote({ title: selectedNote.title, content: selectedNote.content });
@@ -33,6 +52,9 @@ const EditNote = ({ selectedNote, notes, updateNote}) => {
       <div className="editNote">
         <form onSubmit={handleSubmit}>
           <TextField
+            multiline
+            variant='outlined'
+            className={style.box}
             id="name"
             type="text"
             placeholder="Title"
@@ -40,10 +62,11 @@ const EditNote = ({ selectedNote, notes, updateNote}) => {
             onChange={handleNameChange}
             value={editNote.title}
           />
-          <br></br>
-          <br></br>
+          
 
           <TextField
+            className={style.box}
+            multiline
             id="content"
             type="textarea"
             placeholder="Notes"
@@ -51,8 +74,8 @@ const EditNote = ({ selectedNote, notes, updateNote}) => {
             onChange={handleContentChange}
             value={editNote.content}
           />
-          <br></br>
-          <button type="submit">Save Changes</button>
+          
+          <Button className={style.button} variant='contained' type="submit">Save Changes</Button>
         </form>
       </div>
     );

@@ -26,7 +26,8 @@ const NewNote = ({ deleteSelected, createNewNote, selectedNote, notes}) => {
   const style = useStyles();
   const history = useHistory();
   const onClick = () => {
-    history.push('/users/login')
+    console.log(localStorage.getItem('token'))
+    // history.push('/users/login')
   }
   const handleDelete = () => {
     

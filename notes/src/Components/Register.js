@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import TextField from '@material-ui/core/TextField';
 import CssBaseline from '@material-ui/core/CssBaseline'
+import backImage from "../images/prism.png";
 
 //Register does NOT require axiosWithAuth
 
@@ -15,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    marginTop: theme.spacing(10),
+    marginTop: theme.spacing(14)
   },
   form: {
     // display: "flex",
@@ -60,6 +61,7 @@ const Register = () => {
     setRegCred({ username: "", password: "" });
   };
   return (
+    // <div className={style.homeContainer}>
     <Container maxWidth="xs">
         {/* <CssBaseline /> */}
       <div className={style.main}>
@@ -94,11 +96,12 @@ const Register = () => {
           </Grid>
           {/* <input  type="submit" value="Submit"/> */}
           <Button fullWidth className={style.submit}type="submit" variant="contained">
-            Submit
+            Register
           </Button>
         </form>
       </div>
     </Container>
+    // </div>
   );
 };
 

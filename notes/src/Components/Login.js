@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    marginTop: theme.spacing(10),
+    marginTop: theme.spacing(14),
   },
   form: {
     // display: "flex",
@@ -64,7 +64,7 @@ const Login = () => {
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
                 <TextField
-                  type="text"
+                  type="text" 
                   name="username"
                   required
                   fullWidth
@@ -90,7 +90,7 @@ const Login = () => {
           </Grid>
           {/* <input  type="submit" value="Submit"/> */}
           <Button fullWidth className={style.submit}type="submit" variant="contained">
-            Submit
+            Login
           </Button>
         </form>
       </div>
