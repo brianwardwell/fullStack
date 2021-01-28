@@ -34,6 +34,8 @@ const useStyles = makeStyles((theme) => ({
   bottomButton: {
     marginTop: theme.spacing(5),
     marginBottom: theme.spacing(10),
+    backgroundColor: "rgb(65, 10, 90)",
+    color: "white"
   },
   typer: {
     color: "rgb(65, 10, 90)",
@@ -72,7 +74,7 @@ const Home = () => {
             className={style.bottomButton}
             variant="contained"
           >
-            <Link to="/users/login">Login</Link>
+            Login
           </Button>
         </div>
       </Container>

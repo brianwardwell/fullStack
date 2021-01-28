@@ -1,11 +1,39 @@
 import React, { useState } from "react";
 import { useHistory } from 'react-router-dom';
 import axios from "axios";
+import Container from "@material-ui/core/Container";
+import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
+import TextField from '@material-ui/core/TextField';
+import CssBaseline from '@material-ui/core/CssBaseline'
 
 //Login does NOT require axiosWithAuth
 
+const useStyles = makeStyles((theme) => ({
+  main: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    marginTop: theme.spacing(10),
+  },
+  form: {
+    // display: "flex",
+    // flexDirection: "column",
+    // alignItems: "center",
+    marginTop: theme.spacing(3),
+    width: "100%",
+  },
+  submit: {
+      margin: theme.spacing(3, 0, 2),
+      backgroundColor: "rgb(65, 10, 90)",
+      color: "white"
+  }
+}))
+
 const Login = () => {
   const [loginCred, setLoginCred] = useState({ username: "", password: "" });
+  const style = useStyles();
   const history = useHistory();
   const handleNameChange = (e) => {
     setLoginCred({ ...loginCred, username: e.target.value });
@@ -28,30 +56,45 @@ const Login = () => {
     
 
   return (
-    <div>
-      <form onSubmit={submitLogin}>
+    <Container maxWidth="xs">
+        {/* <CssBaseline /> */}
+      <div className={style.main}>
         <h1>Login</h1>
-        <label>
-          Username:
-          <input
-            type="text"
-            name="name"
-            value={loginCred.username}
-            onChange={handleNameChange}
-          />
-        </label>
-        <label>
-          Password:
-          <input
-            type="password"
-            name="name"
-            value={loginCred.password}
-            onChange={handlePasswordChange}
-          />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
-    </div>
+        <form className={style.form} onSubmit={submitLogin}>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+                <TextField
+                  type="text"
+                  name="username"
+                  required
+                  fullWidth
+                  label="Username"
+                  variant="outlined"
+                  onChange={handleNameChange}
+                  value={loginCred.username}
+                />     
+            </Grid>  
+            <Grid item xs={12} sm={6}>
+                <TextField
+                  type="password"
+                  name="password"
+                  required
+                  fullWidth
+                  label="Password"
+                  variant="outlined"
+                  onChange={handlePasswordChange}
+                  value={loginCred.password}
+                />
+            </Grid> 
+            
+          </Grid>
+          {/* <input  type="submit" value="Submit"/> */}
+          <Button fullWidth className={style.submit}type="submit" variant="contained">
+            Submit
+          </Button>
+        </form>
+      </div>
+    </Container>
   );
 };
 

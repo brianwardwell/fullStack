@@ -15,7 +15,7 @@ const Note = ({ note, selectNote, selectedNote}) => {
           onClick={handleClick}
           className={selectedNote && note.id === selectedNote.id ? "note selectedNote" : "note"}
         >
-          <h3>{note.title.length < 25 ? note.title : note.title.substring(0,15) + "..."}</h3>
+          <h4>{note.title.length < 25 ? note.title : note.title.substring(0,15) + "..."}</h4>
           <p>{note.content.length < 25 ? note.content : note.content.substring(0,18) + "..."}</p>
         </div>
       </div>
