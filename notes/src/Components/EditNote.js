@@ -41,9 +41,9 @@ const EditNote = ({ selectedNote, notes, updateNote}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // const { id } = selectedNote;
-    // axiosWithAuth().put(`/api/users/notes/${id}`, editNote);
-    updateNote(selectedNote, notes, editNote)
+    const { id } = selectedNote;
+    axiosWithAuth().put(`/api/users/notes/${id}`, editNote);
+    updateNote(selectedNote, editNote)
 
   };
 

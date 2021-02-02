@@ -44,20 +44,19 @@ const Login = () => {
   };
 
   const submitLogin = (e) => {
-    // e.preventDefault();
-    // axios.post('/api/auth/login', loginCred)
-    // .then(res => { 
-    //     localStorage.setItem('token', res.data.token)  
-    //     history.push('/users/notes') 
-    // })
-    // .catch(err => console.log("ERROR"));
+    e.preventDefault();
+    axios.post('/api/auth/login', loginCred)
+    .then(res => { 
+        localStorage.setItem('token', res.data.token)  
+        history.push('/users/notes') 
+    })
+    .catch(err => console.log("ERROR"));
     history.push('/users/notes') 
   };
     
 
   return (
     <Container maxWidth="xs">
-        {/* <CssBaseline /> */}
       <div className={style.main}>
         <h1>Login</h1>
         <form className={style.form} onSubmit={submitLogin}>
@@ -88,7 +87,6 @@ const Login = () => {
             </Grid> 
             
           </Grid>
-          {/* <input  type="submit" value="Submit"/> */}
           <Button fullWidth className={style.submit}type="submit" variant="contained">
             Login
           </Button>

@@ -24,7 +24,12 @@ code {
   min-width: 200px;
   height: 100vh;
   background-color: #e8e8e8;
+  overflow-y: scroll;
 }
+
+/* .notesList::-webkit-scrollbar {
+  display: none;
+} */
 
 .editNote {
   width: 62vw;
