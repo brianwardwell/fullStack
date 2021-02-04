@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -67,7 +67,7 @@ const Home = () => {
           </Button>
           <Typography variant="h5">Already A Member?</Typography>
           <Button
-            conClick={onClickLog}
+            onClick={onClickLog}
             fullWidth
             className={style.bottomButton}
             variant="contained"

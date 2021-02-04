@@ -1,5 +1,5 @@
 import React  from "react";
-import {Link, useHistory} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import {makeStyles} from '@material-ui/core/styles';
 
@@ -22,12 +22,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const NewNote = ({ deleteSelected, createNewNote, selectedNote, notes}) => {
+const NewNote = ({ deleteSelected, createNewNote, selectedNote}) => {
   const style = useStyles();
   const history = useHistory();
   const onClick = () => {
-    console.log(localStorage.getItem('token'))
+    localStorage.removeItem('token')
     history.push('/users/login')
+    console.log(localStorage.getItem('token'))
   }
   const handleDelete = () => {
     

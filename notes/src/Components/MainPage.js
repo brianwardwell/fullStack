@@ -24,7 +24,7 @@ const MainPage = () => {
       })
       .catch(() => console.log("Couldn't finish UseEffect"));
   }, []);
-  
+  console.log("NOTES", notes)
   //Note will receive the note from NotesList after it maps
   //selectNote() will take that note in and set it to state
   const selectNote = (note) => {
@@ -42,7 +42,7 @@ const MainPage = () => {
               ? console.log(`Successfully deleted ${count} note`)
               : console.log("Couldn't delete that note");
           })
-          .catch((err) => console.log("BUTTS", err))
+          .catch((err) => console.log("Couldn't delete from server", err))
       : console.log("No note selected");
     // const newNotes = notes.filter(n => n.id !== note.id);
     // setNotes(newNotes);
@@ -75,10 +75,13 @@ const MainPage = () => {
     axiosWithAuth()
       .post("/api/users/notes", newNote)
       .then((res) => {
-        res.status(200).json({ message: "Note posted" });
+        res.status === 200 ? console.log("Successfully added new note", res)
+        : console.log("Couldn't create new note")
+        setNotes([...notes, {...newNote, id: res.data}]);
       })
       .catch((err) => console.log("POST failed", err));
-    setNotes([...notes, newNote]);
+      
+    
   };
 
   const updateNote = (selNote, editedNote) => {
@@ -98,7 +101,6 @@ const MainPage = () => {
         createNewNote={createNewNote}
         deleteSelected={deleteSelected}
         selectedNote={selectedNote}
-        notes={notes}
       />
 
       {notes.length > 0 ? (
