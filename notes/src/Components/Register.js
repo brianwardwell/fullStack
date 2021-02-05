@@ -59,7 +59,7 @@ const Register = () => {
     setRegCred({ username: "", password: "" });
     history.push("/users/login");
   };
-  console.log('RegCred', regCred)
+  
   return (
     <Container maxWidth="xs">
       <div className={style.main}>

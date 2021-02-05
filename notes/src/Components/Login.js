@@ -49,7 +49,6 @@ const Login = () => {
         history.push('/users/notes') 
     })
     .catch(err => console.log("ERROR"));
-    history.push('/users/notes') 
   };
     
 

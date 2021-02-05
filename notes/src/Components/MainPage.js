@@ -77,7 +77,7 @@ const MainPage = () => {
       .then((res) => {
         res.status === 200 ? console.log("Successfully added new note", res)
         : console.log("Couldn't create new note")
-        setNotes([...notes, {...newNote, id: res.data}]);
+        setNotes([...notes, {...res.data}]);
       })
       .catch((err) => console.log("POST failed", err));
       
