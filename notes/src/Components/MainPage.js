@@ -7,11 +7,7 @@ import axiosWithAuth from "../axiosWithAuth";
 import "../App.css";
 
 const MainPage = () => {
-  // let dummyData = [
-  //   { id: 1, title: "Brian", content: "b note" },
-  //   { id: 2, title: "Taryn", content: "t note" },
-  //   { id: 3, title: "Finley", content: "f note" },
-  // ];
+ 
 
   const [notes, setNotes] = useState([]);
   const [selectedNote, setSelectedNote] = useState(undefined);
