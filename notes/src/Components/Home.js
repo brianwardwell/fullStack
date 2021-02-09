@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    marginBottom: '100px'
   },
   topButton: {
     marginTop: theme.spacing(5),
