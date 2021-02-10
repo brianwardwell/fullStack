@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { useHistory } from "react-router-dom";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import TextField from '@material-ui/core/TextField';
+import axiosWithoutAuth from '../axiosWithoutAuth';
 
 //Register does NOT require axiosWithAuth
 
@@ -45,7 +45,7 @@ const Register = () => {
   //changed url from /users to /users/signIn, will do same for login
   const submitNewUser = (e) => {
     e.preventDefault();
-    axios.post('/api/auth/signIn', regCred)
+    axiosWithoutAuth.post('/api/auth/signIn', regCred)
     .then(res => {
         console.log("RES STATUS", res.status)
         if (res.status === 200){

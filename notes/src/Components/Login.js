@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useHistory } from 'react-router-dom';
-import axios from "axios";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import TextField from '@material-ui/core/TextField';
+import axiosWithoutAuth from '../axiosWithoutAuth';
 //Login does NOT require axiosWithAuth
 
 const useStyles = makeStyles((theme) => ({
@@ -43,7 +43,7 @@ const Login = () => {
 
   const submitLogin = (e) => {
     e.preventDefault();
-    axios.post('/api/auth/login', loginCred)
+    axiosWithoutAuth.post('/api/auth/login', loginCred)
     .then(res => { 
         localStorage.setItem('token', res.data.token)  
         history.push('/users/notes') 
