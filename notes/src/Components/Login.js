@@ -43,7 +43,7 @@ const Login = () => {
 
   const submitLogin = (e) => {
     e.preventDefault();
-    axiosWithoutAuth.post('/api/auth/login', loginCred)
+    axiosWithoutAuth().post('/api/auth/login', loginCred)
     .then(res => { 
         localStorage.setItem('token', res.data.token)  
         history.push('/users/notes') 

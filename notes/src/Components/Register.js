@@ -45,7 +45,7 @@ const Register = () => {
   //changed url from /users to /users/signIn, will do same for login
   const submitNewUser = (e) => {
     e.preventDefault();
-    axiosWithoutAuth.post('/api/auth/signIn', regCred)
+    axiosWithoutAuth().post('/api/auth/signIn', regCred)
     .then(res => {
         console.log("RES STATUS", res.status)
         if (res.status === 200){
