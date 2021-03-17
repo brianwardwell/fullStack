@@ -20,7 +20,6 @@ const MainPage = () => {
       })
       .catch(() => console.log("Couldn't finish UseEffect"));
   }, []);
-  console.log("NOTES", notes)
   //Note will receive the note from NotesList after it maps
   //selectNote() will take that note in and set it to state
   const selectNote = (note) => {
