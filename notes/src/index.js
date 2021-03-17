@@ -4,6 +4,18 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { datadogRum } from '@datadog/browser-rum';
+
+datadogRum.init({
+    applicationId: '55a2cb60-0acd-4b01-b551-bc862305f52c',
+    clientToken: 'pub7aca42be413f787d0df896d9fadba016',
+    site: 'datadoghq.com',
+    service: 'ECSite',
+//  env: 'production',
+//  version: '1.0.0',
+    sampleRate: 100,
+    trackInteractions: true
+});
 
 ReactDOM.render(
   <React.StrictMode>
