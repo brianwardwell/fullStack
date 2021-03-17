@@ -23,7 +23,6 @@ const MainPage = () => {
   //Note will receive the note from NotesList after it maps
   //selectNote() will take that note in and set it to state
   const selectNote = (note) => {
-    //Gets passed to Note.js
     //Needed to set selectedId state
     setSelectedNote(note);
   };
