@@ -11,8 +11,8 @@ datadogRum.init({
     clientToken: 'pub7aca42be413f787d0df896d9fadba016',
     site: 'datadoghq.com',
     service: 'ECSite',
-//  env: 'production',
-//  version: '1.0.0',
+    env: 'production',
+    version: '1.0.0',
     sampleRate: 100,
     trackInteractions: true
 });
