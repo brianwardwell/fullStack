@@ -3,7 +3,7 @@ import axios from "axios";
  const axiosWithoutAuth = () => {
   
   return axios.create({
-    baseURL: "https://note-clone.herokuapp.com/"
+    baseURL: "http://localhost:5000"
   
   });
 };

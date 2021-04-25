@@ -28,7 +28,6 @@ const NewNote = ({ deleteSelected, createNewNote, selectedNote}) => {
   const onClick = () => {
     localStorage.removeItem('token')
     history.push('/users/login')
-    console.log(localStorage.getItem('token'))
   }
   const handleDelete = () => {
     

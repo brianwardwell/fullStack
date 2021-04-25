@@ -1,27 +1,26 @@
 import React, { useEffect, useState } from "react";
 import axiosWithAuth from "../axiosWithAuth";
-import TextField from '@material-ui/core/TextField'
-import { makeStyles } from '@material-ui/core/styles'
-import Button from '@material-ui/core/Button'
+import TextField from "@material-ui/core/TextField";
+import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles(() => ({
   box: {
-    // position: 'relative',
-    paddingLeft: '35px',
-    paddingTop: '40px',
-    width: '90%',
-    overflowWrap: 'break-word',
-    marginBottom: '30px'
+    paddingLeft: "35px",
+    paddingTop: "40px",
+    width: "90%",
+    overflowWrap: "break-word",
+    marginBottom: "30px",
   },
   button: {
-    marginLeft: '35px',
-    marginTop: '50px',
+    marginLeft: "35px",
+    marginTop: "50px",
     backgroundColor: "rgb(135,63, 163)",
-    color: 'white'
-  }
-}))
+    color: "white",
+  },
+}));
 
-const EditNote = ({ selectedNote, notes, updateNote}) => {
+const EditNote = ({ selectedNote, notes, updateNote }) => {
   const [editNote, setEditNote] = useState({ title: "", content: "" });
   const style = useStyles();
   //Sets the editNote state immediately to the currently selected note
@@ -43,8 +42,7 @@ const EditNote = ({ selectedNote, notes, updateNote}) => {
     e.preventDefault();
     const { id } = selectedNote;
     axiosWithAuth().put(`/api/users/notes/${id}`, editNote);
-    updateNote(selectedNote, editNote)
-
+    updateNote(selectedNote, editNote);
   };
 
   if (notes.length > 0) {
@@ -53,7 +51,7 @@ const EditNote = ({ selectedNote, notes, updateNote}) => {
         <form onSubmit={handleSubmit}>
           <TextField
             multiline
-            variant='outlined'
+            variant="outlined"
             className={style.box}
             id="name"
             type="text"
@@ -62,7 +60,6 @@ const EditNote = ({ selectedNote, notes, updateNote}) => {
             onChange={handleNameChange}
             value={editNote.title}
           />
-          
 
           <TextField
             className={style.box}
@@ -74,8 +71,10 @@ const EditNote = ({ selectedNote, notes, updateNote}) => {
             onChange={handleContentChange}
             value={editNote.content}
           />
-          
-          <Button className={style.button} variant='contained' type="submit">Save Changes</Button>
+
+          <Button className={style.button} variant="contained" type="submit">
+            Save Changes
+          </Button>
         </form>
       </div>
     );

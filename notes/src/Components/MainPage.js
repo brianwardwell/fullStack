@@ -7,8 +7,6 @@ import axiosWithAuth from "../axiosWithAuth";
 import "../App.css";
 
 const MainPage = () => {
- 
-
   const [notes, setNotes] = useState([]);
   const [selectedNote, setSelectedNote] = useState(undefined);
 
@@ -42,40 +40,24 @@ const MainPage = () => {
     // setNotes(newNotes);
     const newNotes = notes.filter((note) => note.id !== selNote.id);
     setNotes(newNotes);
-    setSelectedNote(newNotes.length ?  newNotes[0] : undefined);
+    setSelectedNote(newNotes.length ? newNotes[0] : undefined);
   };
 
-  /***** Keeping deleteAll for dev purposes, remove when deploying *****/
-  // const deleteAll = () => {
-  //   axiosWithAuth()
-  //     .delete("/api/users/notes")
-  //     .then((res) => {
-  //       console.log("Deleted All", res);
-  //     })
-  //     .catch((err) => console.log({message: `Couldnt delete because ${err}`}));
-  //   //Using a counter to give the useEffect something to watch for so it automatically rerenders
-  //   setCount(count + 1);
-  // };
-
-  //Creating a new note object that posts immediately to the db after the newNote button is clicked
-  // Using notes.length as a placeholder fro id until i complete front end
   const newNote = {
     title: "Untitled",
     content: "...",
   };
 
   const createNewNote = () => {
-    // console.log("GETTING TO NEW NOTE POST?");
     axiosWithAuth()
       .post("/api/users/notes", newNote)
       .then((res) => {
-        res.status === 200 ? console.log("Successfully added new note", res)
-        : console.log("Couldn't create new note")
-        setNotes([...notes, {...res.data}]);
+        res.status === 200
+          ? console.log("Successfully added new note", res)
+          : console.log("Couldn't create new note");
+        setNotes([...notes, { ...res.data }]);
       })
       .catch((err) => console.log("POST failed", err));
-      
-    
   };
 
   const updateNote = (selNote, editedNote) => {
