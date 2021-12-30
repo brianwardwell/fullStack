@@ -4,7 +4,7 @@ import axios from "axios";
   const token = localStorage.getItem("token");
   
   return axios.create({
-    baseURL: "http://localhost:5000",
+    baseURL: "https://note-clone.herokuapp.com/",
     headers: {
       Authorization: token,
     },
