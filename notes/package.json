@@ -1,5 +1,5 @@
 {
-  "name": "EverClone Client",
+  "name": "everclone-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -10,7 +10,6 @@
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
     "datadog-metrics": "^0.9.2",
-    "dd-trace": "^4.19.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
